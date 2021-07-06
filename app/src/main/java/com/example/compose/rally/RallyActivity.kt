@@ -23,7 +23,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -73,7 +72,10 @@ fun RallyApp() {
                 modifier = Modifier.padding(innerPadding)
             ) {
                 composable(RallyScreen.Overview.name) {
-                    OverviewBody()
+                    OverviewBody(
+                        onClickSeeAllAccounts = { navController.navigate(RallyScreen.Accounts.name) },
+                        onClickSeeAllBills = { navController.navigate(RallyScreen.Bills.name) }
+                    )
                 }
                 composable(RallyScreen.Accounts.name) {
                     AccountsBody(accounts = UserData.accounts)
@@ -84,10 +86,4 @@ fun RallyApp() {
             }
         }
     }
-}
-
-@Preview
-@Composable
-fun RallyAppPreview() {
-    RallyApp()
 }

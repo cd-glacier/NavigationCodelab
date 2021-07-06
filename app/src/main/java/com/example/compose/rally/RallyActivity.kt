@@ -21,7 +21,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -29,7 +28,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.compose.rally.data.UserData
+import com.example.compose.rally.ui.accounts.AccountsBody
+import com.example.compose.rally.ui.bills.BillsBody
 import com.example.compose.rally.ui.components.RallyTabRow
+import com.example.compose.rally.ui.overview.OverviewBody
 import com.example.compose.rally.ui.theme.RallyTheme
 
 /**
@@ -70,13 +73,13 @@ fun RallyApp() {
                 modifier = Modifier.padding(innerPadding)
             ) {
                 composable(RallyScreen.Overview.name) {
-                    Text(RallyScreen.Overview.name)
+                    OverviewBody()
                 }
                 composable(RallyScreen.Accounts.name) {
-                    Text(RallyScreen.Accounts.name)
+                    AccountsBody(accounts = UserData.accounts)
                 }
                 composable(RallyScreen.Bills.name) {
-                    Text(RallyScreen.Bills.name)
+                    BillsBody(bills = UserData.bills)
                 }
             }
         }
